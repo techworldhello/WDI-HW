@@ -47,23 +47,13 @@ function longestWord(arr) {
 const base = 13;
 const increment = 2;
 const sign = '$';
+const spaces = ' ';
 
 
 for (let i = 1; i <= base; i = i + increment) {
-	let pattern = sign.repeat(i);
-	for (let j = base; j >= 1; j--) {
-		if (j % 2) { // at every odd number add space
-			pattern += ' '.repeat(i)
-		}
-		console.log(pattern);
-	}
+	let number_of_spaces = ((base - i)/2);
+	let pattern = spaces.repeat(number_of_spaces) + sign.repeat(i)
+		
+	console.log(pattern);
 }
-
-1
-3
-5
-7
-9
-11
-13
 
