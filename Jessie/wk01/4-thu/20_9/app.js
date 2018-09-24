@@ -42,18 +42,20 @@ function longestWord(arr) {
 }
 
 
-// moneytree not working 
+// moneytree 
+
 
 const base = 13;
 const increment = 2;
 const sign = '$';
-const spaces = ' ';
 
-
-for (let i = 1; i <= base; i = i + increment) {
-	let number_of_spaces = ((base - i)/2);
-	let pattern = spaces.repeat(number_of_spaces) + sign.repeat(i)
-		
-	console.log(pattern);
+function moneyTree() {
+	for (let i = 1; i <= base; i = i + increment) {
+		const spacing = (base - i) / 2;
+		const pattern = ' '.repeat(spacing) + sign.repeat(i);
+		console.log(pattern);
+	}
 }
+
+
 
