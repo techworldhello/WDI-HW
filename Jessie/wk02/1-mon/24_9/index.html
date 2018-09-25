@@ -4,21 +4,67 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 </head>
-<body>
-	<h1>PT Planner</h1>
+<style>
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
-	<form action="">
-		Where you are now<br>
-		<input type="text">
-		<br>
-		Where you are headed<br>
-		<input type="text">
-		<br>
-		<button type="submit">Let's go!</button>
-	</form>
-	
-	<br>
-	<div id="journey"></div>
+	header {
+		font-family: 'Kosugi', sans-serif;
+		font-size: 30px;
+		margin: 20px auto;
+	}
+
+	#origin, #destination {
+		font-family: 'Kosugi', sans-serif;
+		font-size: 25px;
+		background-color: #2B372A;
+		border: none;
+		color: white;
+		margin: 10px auto;
+		height: 2em;
+		width: 20em;
+	}
+
+	::placeholder {
+		color: white;
+		opacity: .8;
+		padding-left: 10px;
+		font-style: italic;
+		font-size: 16px;
+	}
+
+	input {
+		padding-left: 10px;
+	}
+
+	#submit {
+		font-family: 'Kosugi', sans-serif;
+		font-weight: bold;
+		font-size: 18px;
+		background-color: orange;
+		margin: 20px;
+		height: 2em;
+		width: 10em;
+		border-radius: 5px;
+		cursor: pointer;
+		border: none;
+	}
+
+	</style>
+<body>
+	<div class="container">
+
+		<header>Overly juvenile PT system</header>
+
+		<input type="text" id="origin" placeholder="Where you are now"></input>
+		<input type="text" id="destination" placeholder="Where you are headed to"></input>
+		<button id="submit">See route</button>
+		<div id="result"></div>
+
+	</div>
 
 	<script src="app.js"></script>
 </body>

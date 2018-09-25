@@ -15,13 +15,13 @@ const trainLines = [alamein, glenWaverly, sandringham];
 function getLineAndStation(station) {
 	for (let index in trainLines) {
 		let line = trainLines[index];
-		console.log(line)
+		// console.log('line is ' + line)
 
 		let stationIndex = line.indexOf(station);
-		console.log(stationIndex)
+		// console.log('stationIndex is ' + stationIndex)
 		if (stationIndex !== -1) {
 			return { line: line, station: stationIndex };
-		} // else statement sometimes returns -1, CHECK!
+		} 
 	}
 }
 
@@ -30,13 +30,17 @@ function getLineAndStation(station) {
 function singleOrMulti(origin, dest) {
 	let origLine = getLineAndStation(origin);
 	let destLine = getLineAndStation(dest);
-	// console.log(origLine, destLine)
+	let lineStops = '';
+	console.log(origLine, destLine)
 
 	if (origLine.line == destLine.line) {
-		singleLine(origLine.station, destLine.station, origLine.line);
+		// turn stations into names not indexes
+		lineStops = singleLine(origLine.station, destLine.station, origLine.line);
 	} else {
-		multiLine(origLine.station, destLine.station, origLine.line, destLine.line);
+		// turn stations into names not indexes
+		lineStops = multiLine(origLine.station, destLine.station, origLine.line, destLine.line);
 	}
+	return lineStops;
 }
 
 // function for singleline 
@@ -47,7 +51,7 @@ function singleLine(start, end, line) {
 	let dest = line.indexOf(end);
 
 	if (origin < dest) {
-		for (let i = origin; i < dest + 1; i++) {
+		for (let i = start; i < end + 1; i++) {
 				journey.push(line[i]);	
 		} 
 		return {
@@ -57,7 +61,7 @@ function singleLine(start, end, line) {
 			stops: dest - origin
 		};
 	} else {
-		for (let i = origin; i > dest - 1; i--) {
+		for (let i = start; i > end - 1; i--) {
 			journey.push(line[i]);
 		}
 		return {
@@ -72,12 +76,10 @@ function singleLine(start, end, line) {
 // function for multiline
 
 function multiLine(start, end, firstLine, secondLine) {
-	let firstInterchange = firstLine.indexOf('Richmond');
-	let secondInterchange = secondLine.indexOf('Richmond');
+	const firstInterchange = firstLine.indexOf('Richmond');
+	const secondInterchange = secondLine.indexOf('Richmond');
 	let firstPart = firstLine.indexOf(start);
 	let secondPart = secondLine.indexOf(end);
-	console.log(firstPart, secondPart)
-
 
 	if (firstPart < firstInterchange && secondPart > secondInterchange) { 
 		return {
@@ -118,7 +120,7 @@ function multiLine(start, end, firstLine, secondLine) {
 // display journey on gui
 
 function displayJourney() {
-
+	singleOrMulti()
 }
 
 
