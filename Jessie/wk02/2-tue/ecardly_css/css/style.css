@@ -1,0 +1,89 @@
+* {
+	box-sizing: border-box;
+}
+
+header {
+	display: flex;
+	justify-content: space-around;
+}
+
+h1 {
+	font-weight: bold;
+}
+
+main {
+	display: flex;
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 60%;
+}
+
+body {
+	background-color: lightgrey;
+	font-family: 'Cabin', sans-serif;
+	font-size: 12px;
+}
+
+.topbackground {
+	position: relative;
+}
+
+.mainlogo {
+	position: absolute;
+	margin-top: 10px;
+}
+
+.maincontent {
+	display: flex;
+	flex: 2;
+	padding: 30px;
+	flex-direction: column;
+	background-color: white;
+	margin-right: 50px;
+}
+
+.sidecontent {
+	display: flex;
+	flex: 1;
+	padding: 30px;
+	flex-direction: column;
+	background-color: white;
+	height: 60%;
+	font-weight: bold;
+}
+
+ul > li {
+	list-style: none;
+}
+
+ul {
+	padding: 0px;
+}
+
+.additionalpara {
+	padding: 10px 0 10px 0;
+	border-top: 1px dotted black;
+	border-bottom: 1px solid black;
+}
+
+#boldtext {
+	color: orange;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.para1, .para2 {
+	letter-spacing: 1px;
+}
+
+.sideimages {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 350px;
+}
+
+footer {
+	text-align: center;
+	margin: 30px;
+}
