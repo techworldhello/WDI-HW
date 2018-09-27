@@ -1,9 +1,6 @@
-* {
-	box-sizing: border-box;
-}
-
 header {
 	display: flex;
+	/*background-repeat: repeat-x;*/
 	justify-content: space-around;
 }
 
@@ -19,9 +16,12 @@ main {
 }
 
 body {
+/*	background-image: url('../images/background.jpg')
+	background-image: repeat-x;*/
 	background-color: lightgrey;
 	font-family: 'Cabin', sans-serif;
 	font-size: 12px;
+	margin: 0px;
 }
 
 .topbackground {
@@ -49,6 +49,7 @@ body {
 	flex-direction: column;
 	background-color: white;
 	height: 60%;
+	/*align-items: flex-start;*/
 	font-weight: bold;
 }
 
