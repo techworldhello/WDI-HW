@@ -28,15 +28,23 @@ h1 {
 	margin-right: .5em;
 }
 
-h2 {
+h1 span {
 	color: #989898;
-	font-size: 1.7em;
+	font-size: .5em;
 	margin-top: 1.8em;
 }
 
 article {
 	border-bottom: 1px solid grey;
 	padding-bottom: 1.5em;
+}
+
+article p:first-letter {
+	font-size: 50px;
+	color: lightgrey;
+	float: left;
+	margin-right: 10px;
+	line-height: 1;
 }
 
 .mainarticletitle {
@@ -48,10 +56,6 @@ article {
 	flex: 2;
 	flex-direction: column;
 	margin-right: 2em;
-}
-
-.emphasisedletter {
-	size: 30px;
 }
 
 .sidecontent {
