@@ -76,9 +76,6 @@ function updateDisplay() {
 	= '#d95555' : checkingElements.background.style.backgroundColor = '#C0C0C0';
 }
 
-// Make sure the balance in an account can't go negative. If a user tries to withdraw more money than exists in the account, ignore the transaction.
-// Make sure there is overdraft protection going both ways.
-
 /*
 function withdrawProtection(account, amount) {
 	const withdrawalAmount = parseFloat(amount);
