@@ -1,5 +1,7 @@
 console.log('bank app');
 
+// Keeping track of the checking and savings balances
+
 const BALANCE_CHECKING = 'checking';
 const BALANCE_SAVINGS = 'savings';
 
@@ -27,23 +29,57 @@ const savingsElements = {
 
 let message = document.getElementById('message');
 
-// when savings balance reaches 100k, turn div gold
+// Add functionality so that a user can deposit money into one of the bank accounts.
 
-// user can withdraw past red background, no limits hence liquid bank
+function deposit(account, amount) {
+	balances[account] += parseFloat(amount);
+	updateDisplay();
+}
+
+// Add functionality so that a user can withdraw money from one of the bank accounts.
+
+function withdrawFromChecking() {
+	// balances[account] -= parseFloat(amount);
+	const withdrawalAmount = parseFloat(checkingElements.input.value);
+	const amountLeft = balances[BALANCE_CHECKING] - withdrawalAmount;
+
+	// Nothing left in checking
+	if (amountLeft <= 0) {
+		// Savings has enough funds
+		if (balances[BALANCE_SAVINGS] > amountLeft) {
+			balances[BALANCE_SAVINGS] += amountLeft;
+			balances[BALANCE_CHECKING] = 0;
+			message.innerHTML = 'You have just withdrawn $' + withdrawalAmount
+			console.log('New checking', balances[BALANCE_CHECKING] + amountLeft);
+		} else {
+			message.innerHTML = 'NO moneyz';
+		}
+	// Still money left in checking
+	} 
+	else {
+		balances[BALANCE_CHECKING] = amountLeft;
+	}
+	updateDisplay()
+}
+
+// Make sure you are updating the display and manipulating the HTML of the page so a user can see the change.
+// When the balance of the bank account is $0 the background of that bank account should be red. It should be gray when there is money in the account
 
 function updateDisplay() {
 	savingsElements.balance.innerHTML = '$' + balances[BALANCE_SAVINGS].toFixed(2);
 	checkingElements.balance.innerHTML = '$' + balances[BALANCE_CHECKING].toFixed(2);
+	// how to set input value back to nothing after event is ran
+	// savings.input.value = '';
+	// savings.input.value = '';
 
-	balances[BALANCE_CHECKING] < 0 ? checkingElements.background.style.backgroundColor 
+	balances[BALANCE_CHECKING] <= 0 ? checkingElements.background.style.backgroundColor 
 	= '#d95555' : checkingElements.background.style.backgroundColor = '#C0C0C0';
 }
 
-function withdrawFromChecking(account, amount) {
-	balances[account] -= parseFloat(amount);
-	updateDisplay();
-}
+// Make sure the balance in an account can't go negative. If a user tries to withdraw more money than exists in the account, ignore the transaction.
+// Make sure there is overdraft protection going both ways.
 
+/*
 function withdrawProtection(account, amount) {
 	const withdrawalAmount = parseFloat(amount);
 	const amountLeft = balances[account] - withdrawalAmount;
@@ -62,34 +98,27 @@ function withdrawProtection(account, amount) {
 		}
 	// Still money left in checking
 	} 
-	//else {
-		//balances[BALANCE_CHECKING] = amountLeft;
-	//}
-	//updateDisplay()
+	else {
+		balances[BALANCE_CHECKING] = amountLeft;
+	}
+	updateDisplay()
 }
+*/
 
-/**
- * Deposit a value to the account and update display
- * @param {String} account BALANCE_CHECKING or BALANCE_SAVING
- * @param {Number} amount Number to add
- */
-
-function deposit(account, amount) {
-	balances[account] += parseFloat(amount);
-	updateDisplay();
-}
-
-
-function transferFunds(account, amount) {
-	if (balances[account] > parseFloat(amount)) {
-		balances[account] - amount;
-		updateDisplay();
+function transferFunds(accountFrom, accountTo, accountFromElem, accountToElem, amount) {
+	if (balances[accountFrom] >= parseFloat(amount)) {
+		balances[accountFrom] -= parseFloat(amount);
+		accountFromElem.balance.innerHTML = '$' + balances[accountFrom].toFixed(2);
+		// accountToElem not updating right
+		accountToElem.balance.innerHTML = '$' + parseFloat(amount) + balances[accountTo].toFixed(2);
+		message.innerHTML = 'You are transferring $' + amount + ' from ' 
+		+ accountFrom + ' to ' + accountTo;
 	} else {
-		transferInfo.innerHTML = 'You have insufficient funds';
+		message.innerHTML = 'You have insufficient funds';
 	}
 }
 
-//increase by 2% interest every 5 sec to encourage saving
+//increase by 10% interest every 5 sec to encourage saving
 
 function savingsAccInterest() {
 	let interestIncrement = balances[BALANCE_SAVINGS] * 2;
@@ -100,16 +129,17 @@ function savingsAccInterest() {
 			if (balances[BALANCE_SAVINGS] > interestIncrement) {
 				savingsElements.background.style.backgroundColor = 'gold'
 			}
-		}, 1000);
+		}, 5000);
 	}
 }
 
-//when overdraft increase interest by 10% every 5 sec, when reached 50% give an alert
+/*
+When overdraft increase interest by 10% every 5 sec, when reached 50% give an alert
 
 function checkingAccInterest() { 
 	let interestDecrement = balances[BALANCE_CHECKING] * 1.5;
 
-	if (balances[BALANCE_CHECKING] <= 0)  
+	if (balances[BALANCE_CHECKING] < 0)  
 		setInterval(() => {
 			balances[BALANCE_CHECKING] = balances[BALANCE_CHECKING].toFixed(2) * 1.1;
 			if (balances[BALANCE_CHECKING] <= interestDecrement) {
@@ -118,20 +148,19 @@ function checkingAccInterest() {
 			updateDisplay();
 	}, 5000);
 }
-
+*/
 
 checkingElements.btnDeposit.addEventListener('click', () => {
 	deposit(BALANCE_CHECKING, checkingElements.input.value);
 });
 
 checkingElements.btnWithdraw.addEventListener('click', () => { 
-	withdrawFromChecking(BALANCE_CHECKING, checkingElements.input.value);
-	withdrawProtection(BALANCE_CHECKING, checkingElements.input.value)
-	checkingAccInterest();
+	withdrawFromChecking();
+	// withdrawProtection(BALANCE_CHECKING, checkingElements.input.value);
 });
 
 checkingElements.btnTransfer.addEventListener('click', () => {
-	transferFromSavings(BALANCE_CHECKING, checkingElements.input.value);
+	transferFunds(BALANCE_CHECKING, BALANCE_SAVINGS, checkingElements, savingsElements, checkingElements.input.value)
 });
 
 savingsElements.btnDeposit.addEventListener('click', () => { 
@@ -140,6 +169,6 @@ savingsElements.btnDeposit.addEventListener('click', () => {
 });
 
 savingsElements.btnTransfer.addEventListener('click', () => {
-	transferFromSavings(BALANCE_SAVINGS, savingsElements.input.value);
-	protectOverdraft(savingsBalance);
+	transferFunds(BALANCE_SAVINGS, BALANCE_CHECKING, savingsElements, checkingElements, savingsElements.input.value);
+	// withdrawProtection(BALANCE_SAVINGS, savingsElements.input.value);
 });

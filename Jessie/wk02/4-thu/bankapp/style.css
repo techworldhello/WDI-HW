@@ -9,10 +9,9 @@ body {
 
 body::before { 
 	content: "";
-	background: url('water-img.png');
+	background: url('images/water-img.png');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
-	-o-background-size: cover;
 	background-size: cover;
 	opacity: 0.7;
 	top: 0;
@@ -62,15 +61,9 @@ h1 {
 }
 
 @keyframes swing {
-  0%{ 
-	transform: rotate(-5deg);
-	}
-  50%{ 
-	transform: rotate(10deg);
-	}
-  100%{ 
-	transform: rotate(-5deg);
-	}
+  0%{ transform: rotate(-5deg);}
+  50%{ transform: rotate(10deg);}
+  100%{ transform: rotate(-5deg);}
 }
 
 .checking-acc, .savings-acc {
