@@ -1,17 +1,5 @@
 console.log('PTV');
 
-// display journey on gui
-
-const originInput = document.getElementById('origin');
-const destInput = document.getElementById('destination');
-const routeBtn = document.getElementById('submit');
-const displayResult = document.getElementById('result');
-
-routeBtn.addEventListener('click', () => {
-	singleOrMulti(originInput.value, destInput.value);
-});
-
-
 // get each line 
 
 const alamein = ["Flinders Street", "Richmond", "East Richmond", "Burnley", "Hawthorn", "Glenferrie"];
@@ -24,8 +12,8 @@ const trainLines = [alamein, glenWaverly, sandringham];
 
 
 function getLineAndStation(station) {
-	for (let index in trainLines) {
-		let line = trainLines[index];
+	for (let index of trainLines) {
+		let line = index;
 
 		let stationIndex = line.indexOf(station);
 		if (stationIndex !== -1) {
@@ -116,6 +104,27 @@ function multiLine(start, end, firstLine, secondLine) {
 	}
 }
  
-singleOrMulti('Glenferrie', 'Tooronga');
-singleOrMulti('Flagstaff', 'Glenferrie');
-singleOrMulti('Richmond', 'Hawthorn');
+console.log(singleOrMulti('Glenferrie', 'Tooronga'));
+console.log(singleOrMulti('Flagstaff', 'Glenferrie'));
+console.log(singleOrMulti('Richmond', 'Hawthorn'));
+console.log(singleOrMulti('Windsor', 'Flinders Street'));
+console.log(singleOrMulti('Southern Cross', 'Flagstaff'));
+
+
+// display journey on gui
+
+const originInput = document.getElementById('origin');
+const destInput = document.getElementById('destination');
+const routeBtn = document.getElementById('submit');
+const displayResult = document.getElementById('result');
+
+
+function updateDisplay() {
+	displayResult.innerHTML = lineStops // what to put here
+}
+
+routeBtn.addEventListener('click', () => {
+	singleOrMulti(originInput.value, destInput.value);
+	updateDisplay();
+});
+
