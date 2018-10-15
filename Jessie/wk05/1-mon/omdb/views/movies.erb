@@ -1,8 +1,9 @@
-<!-- = when you want the value to display in html -->
-<a href="/">home</a>
-<h1><%= @title %></h1>
-<p><%= @year %></p>
-<p><%= @rater %> - <%= @rating %></p>
-<p><%= @director %></p>
-<p><%= @plot %></p>
-<img src="<%= @poster %>" alt="poster">
+<a href="/">home</a><span> | </span>
+<a href="/history">searched movies</a>
+<h3>Select one:</h3>
+<ul style="list-style-type: none; ">
+	<% @result["Search"].each do |trilogy| %>
+	<li><a href="/<% @movie %>"><%= trilogy["Title"] %></a></li>
+	<% end %>
+</ul>
+		
