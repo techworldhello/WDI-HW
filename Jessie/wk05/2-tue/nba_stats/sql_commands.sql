@@ -32,5 +32,5 @@ SELECT age, AVG(points/games) AS average_points FROM players GROUP BY age ORDER 
 ordered from most to least
 * get team and player count 
 * counting players who scored above 12 pts per game
-* order most to least pts
+* order most to least players by team
 SELECT team, COUNT(name) FROM players WHERE points/games > 12 GROUP BY team ORDER BY COUNT DESC;
