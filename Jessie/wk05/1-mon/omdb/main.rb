@@ -15,10 +15,10 @@ get '/movies' do
 	title = params[:info]
 	if title == "" || title == nil 
 		redirect to('/default')
-	elsif
+	else
 		@result = HTTParty.get("http://www.omdbapi.com/?s=#{title}&apikey=2f6435d9")
-	else 
-		@result["Search"].length == 1
+	end
+	if @result["Search"].length == 1
 		redirect to ('/result')
 	end
 	file = File.open('search_history.txt', 'a')
@@ -30,13 +30,14 @@ get '/movies' do
 end 
 
 
-get '/:movie' do 
+get '/result' do 
 	movie = params[:movie] 
-	# binding.pry
 	@filtered = HTTParty.get("http://www.omdbapi.com/?t=#{movie}&apikey=2f6435d9")
 	@title = @filtered["Title"]
-	@rater = @filtered["Ratings"][1]["Source"]
-	@rating = @filtered["Ratings"][1]["Value"]
+	if @filtered["Ratings"][1]
+		@rater = @filtered["Ratings"][1]["Source"]
+		@rating = @filtered["Ratings"][1]["Value"]
+	end 
 	@director = @filtered["Director"]
 	@year = @filtered["Year"]
 	@plot = @filtered["Plot"]

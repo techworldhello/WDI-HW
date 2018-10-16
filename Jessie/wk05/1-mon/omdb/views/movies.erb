@@ -3,7 +3,7 @@
 <h3>Select one:</h3>
 <ul style="list-style-type: none; ">
 	<% @result["Search"].each do |trilogy| %>
-	<li><a href="/<% @movie %>"><%= trilogy["Title"] %></a></li>
+	<li><a href="/result?movie=<%= trilogy["Title"] %>"><%= trilogy["Title"] %></a></li>
 	<% end %>
 </ul>
 		
