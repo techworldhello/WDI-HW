@@ -1,0 +1,23 @@
+body {
+	font-family: 'Krub', sans-serif;
+	color: purple;
+}
+
+h1 {
+	text-align: center;
+}
+
+.container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.places-been {
+	display: flex;
+	flex-direction: column;
+	margin: 50px;
+}
+
+.places-to-go {
+	text-align: center;
+}

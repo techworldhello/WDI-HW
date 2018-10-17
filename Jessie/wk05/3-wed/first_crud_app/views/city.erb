@@ -1,0 +1,12 @@
+<h2><%= @city['city'] %></h2>
+
+<img src="<%= @city['image_url'] %>" alt="city">
+
+<p><%= @city['description'] %></p>
+
+<button>edit</button>
+
+<form action="" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<button>wipe this memory</button>
+</form>

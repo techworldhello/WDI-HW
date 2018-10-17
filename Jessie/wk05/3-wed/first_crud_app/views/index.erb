@@ -1,0 +1,19 @@
+<h1>travel diary</h1>
+
+<main class='container'>
+	<div class='places-been'>
+		<% @cities.each do |name| %>
+		<h2><a href="/<%= name["city"] %>"><%= name["city"] %></a></h2>
+		<img src="<%= name["image_url"] %>" alt="city">
+		<% end %>
+	</div>
+	<a href="/city/new">add a new post!</a>
+</main>
+
+<!-- take user to a page with ul list that can CRUD -->
+<form action="/to-go">
+	<section class='places-to-go'>
+		<p>places I need to go</p>
+		<button>edit</button>
+	</section>
+</form>
