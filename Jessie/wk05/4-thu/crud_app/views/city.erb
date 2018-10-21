@@ -1,0 +1,22 @@
+<a href="/city" style="margin-left: 48%;">Back</a>
+<h2><%= @city['city'] %></h2>
+
+<img src="<%= @city['image_url'] %>" alt="city">
+
+<p><%= @city['description'] %></p>
+
+<form action="/city/<%= @city['id'] %>/edit" method="get">
+	<button>edit</button>
+</form>
+
+<form action="/comments" method="post">
+	<input type="hidden" name="city_id" value="<%= @city['id']%>">
+	<label for="">Comment</label>
+	<textarea name="body" id="" cols="30" rows="6"></textarea>
+	<button>Post comment</button>
+</form>
+
+<form action="/city/:id" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<button>wipe this memory</button>
+</form>

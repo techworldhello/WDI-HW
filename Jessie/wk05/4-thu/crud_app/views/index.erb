@@ -1,0 +1,24 @@
+<h1>Travel Diary  ✈️</h1>
+
+<main class='container'>
+	<aside class="panel">
+		<p><a href="/city/new">New post</a></p>
+		<p><a href="/city">Places I've been</a></p>
+	<!-- 	<ul>
+			<% @cities.each do |title|%>
+			<li><a href="/city/<%= title['id']%>"></a><%= title['city'] %></li>
+			<% end %>
+		</ul> -->
+		<p><a href="/to-go">Places to go</a></p>
+		<div class="theme">
+			<p>Theme changer</p>
+			<button value= "sealife" class="sealife">Sealife</button>
+			<button value= "misty-rose" class="misty-rose">Misty Rose</button>
+		</div>
+	</aside>
+	<div class='random-img'>
+		<% @rand_images.each do |img| %>
+		<img src="<%= img['image_url'] %>">
+		<% end %>
+	</div>
+</main>

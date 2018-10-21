@@ -1,0 +1,17 @@
+<a href="/city/<%= @city['id']%>" style="margin-left: 48%;">Back</a>
+<h1>Edit city</h1>
+
+<form action="/city/<%= @city['id']%>" method="post">
+	<input type="hidden" name="_method" value="put">
+
+	<label for="">city</label>
+	<input name="city" type="text" value="<%= @city['city'] %>">
+
+	<label for="">image url</label>
+	<input name="image_url" type="text" value="<%= @city['image_url'] %>">
+
+	<label for="">description</label>
+	<input name="description" type="text" value="<%= @city['description'] %>">
+
+	<button>Update</button>
+</form>

@@ -1,0 +1,15 @@
+<a href="/" style="margin-left: 48%;">Home</a>
+<h1>My memoir</h1>
+<a href="/city/new" style="margin-left: 5%;">Add a new post!</a>
+
+<!-- flex direction row not working!! -->
+<main class='memoir-container'>
+	<div class='places-been'>
+		<% @cities.each do |name| %>
+		<h2><a href="/city/<%= name["id"] %>"><%= name["city"] %></a></h2>
+		<img src="<%= name["image_url"] %>" alt="city">
+		<p><%= name["description"] %></p>
+		<% end %>
+	</div>
+</main>
+
