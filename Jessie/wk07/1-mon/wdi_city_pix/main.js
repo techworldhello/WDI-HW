@@ -1,5 +1,5 @@
 const cityOptions = document.getElementById('city-type');
-const cities = ['nyc', 'sf', 'la', 'sydney', 'austin'];
+const cities = ['nyc', 'sf', 'la', 'syd', 'atx'];
 
 const getCity = () => {
 	for(let i = 0; i < cities.length; i++) { 
@@ -14,12 +14,12 @@ getCity();
 
 const docBody = document.querySelector('body');
 
-cityOptions.addEventListener('change', (e) => {
+cityOptions.addEventListener('change', e => {
 	docBody.classList = '';
-	for(let i = 0; i < cities.length; i++) {
+	for(let i = 0; i < cities.length; i++) { 
 		if (e.target.value == cities[i].toUpperCase()) {
 			docBody.classList.add(cities[i]);
-		} 
+		}
 	}
 })
 
