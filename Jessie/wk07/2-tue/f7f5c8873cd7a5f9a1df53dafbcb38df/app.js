@@ -10,18 +10,18 @@ setColor.addEventListener('click', event => {
 })
 
 
-function squares() {
+function createSquares() {
 	for(let i = 0; i <= 1000; i++) {
 		const squares = document.createElement('div');
 		squares.classList.add("square");
 		squares.addEventListener('mouseover', (e) => {
-			e.target.style.background = 'white';
+			e.target.style.background = squares.classList.add("brush");
 		})
 		docBody.appendChild(squares);
 	}
 }
 
-squares();
+createSquares();
 
 const poster = document.querySelector('#displayPoster');
 
