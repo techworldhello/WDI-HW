@@ -10,9 +10,13 @@ form.addEventListener('click', (event) => {
 
 })
 
+
 for(let i = 0; i <= 1000; i++) {
 	const squares = document.createElement('div');
 	squares.classList.add("squares");
 	squares.style.cssText = "width: 20px; height: 20px;";
+	squares.addEventListener('click', (e) => {
+		e.target.style.background = 'green';
+	})
 	docBody.appendChild(squares);
 }
