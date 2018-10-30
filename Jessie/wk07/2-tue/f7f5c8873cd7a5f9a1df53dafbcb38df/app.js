@@ -14,7 +14,7 @@ function squares(inputCol) {
 		const squares = document.createElement('div');
 		squares.classList.add("squares");
 		squares.style.cssText = "width: 20px; height: 20px; background-color: white;";
-		squares.addEventListener('click', (e) => {
+		squares.addEventListener('mouseover', (e) => {
 			e.target.style.background = inputCol;
 		})
 		docBody.appendChild(squares);
