@@ -1,23 +1,37 @@
-const form = document.querySelector('form');
+const setColor = document.querySelector('.color-setter');
+const searchMovie = document.querySelector('.movie-searcher');
 const docBody = document.querySelector('body');
 
-form.addEventListener('click', (event) => {
-	const input = document.querySelector('input').value;
+setColor.addEventListener('click', event => {
 	event.preventDefault();
+	const colorInput = document.querySelector('.color-input').value;
 	docBody.style.background = '';
-	docBody.style.background = input;
-	squares(input);
+	docBody.style.background = colorInput;
 })
 
-function squares(inputCol) {
+
+function squares() {
 	for(let i = 0; i <= 1000; i++) {
 		const squares = document.createElement('div');
-		squares.classList.add("squares");
-		squares.style.cssText = "width: 20px; height: 20px; background-color: white;";
+		squares.classList.add("square");
 		squares.addEventListener('mouseover', (e) => {
-			e.target.style.background = inputCol;
+			e.target.style.background = 'white';
 		})
 		docBody.appendChild(squares);
 	}
 }
 
+squares();
+
+const poster = document.querySelector('#displayPoster');
+
+searchMovie.addEventListener('submit', event => {
+	event.preventDefault();
+	poster.innerHTML = '';
+	const displayMoviePoster = res => {
+		poster.src = res.Poster;
+	}
+	const movieTitleInput = document.querySelector('.movie-input').value;
+	const url = `http://www.omdbapi.com/?t=${movieTitleInput}&apikey=2f6435d9`;
+	$.ajax({ url: url }).done(displayMoviePoster);
+})
