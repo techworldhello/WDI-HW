@@ -1,0 +1,44 @@
+* {
+	font-family: 'Patrick Hand', cursive;
+	font-size: 16pt;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+form {
+	margin: 0 auto;
+}
+
+.show {
+	margin: 0 auto;
+	margin-top: 2rem;
+}
+
+img {
+	height: 25rem;
+	width: 25rem;
+}
+
+.perSet {
+	display: flex;
+	flex-direction: column;
+}
+
+button {
+	width: 5rem;
+	height: 2rem;
+	border-radius: 1rem;
+	margin: 1rem;
+	background-color: skyblue;
+	color: white;
+	border: none;
+}
+
+#search {
+	width: 5rem;
+	height: 2rem;
+	border-radius: 1rem;
+}
