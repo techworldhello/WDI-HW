@@ -16,27 +16,27 @@ const createDiv = name => {
 
 const getResults = url => {
 	fetch(url)
-	.then(res => res.json())
-	.then(json => json.data.map (gif => {
-		const perImg = gif.images.original.url;
-		const imgTag = document.createElement('img');
-		const imgDiv = createDiv('perSet');
+		.then(res => res.json())
+		.then(json => json.data.map (gif => {
+			const perImg = gif.images.original.url;
+			const imgTag = document.createElement('img');
+			const imgDiv = createDiv('perSet');
 
-		imgTag.src = perImg;
-		imgDiv.appendChild(imgTag);
-		giphyDiv.appendChild(imgDiv);
-		
-		const deleteButton = createButton('Delete');
-		imgDiv.appendChild(deleteButton);
+			imgTag.src = perImg;
+			imgDiv.appendChild(imgTag);
+			giphyDiv.appendChild(imgDiv);
+			
+			const deleteBtn = createButton('Delete');
+			imgDiv.appendChild(deleteBtn);
 
-		deleteButton.addEventListener('click', e => {
-			e.target.closest('.perSet').remove();
-		})
-	}))
-	.catch(err => console.error(err))
+			deleteBtn.addEventListener('click', e => {
+				e.target.closest('.perSet').remove();
+			})
+		}))
+		.catch(err => console.error(err))
 }
 
-const limitNum = 5;
+const limitSearchResults = 5;
 let offsetNum = 0;
 
 form.addEventListener('submit', event => {
@@ -46,14 +46,17 @@ form.addEventListener('submit', event => {
 	const query = document.querySelector('input').value;
 	const searchType = 'funny';
 
-	getResults(`https://api.giphy.com/v1/gifs/search?q=${searchType}+${query}&limit=${limitNum}&offset=${offsetNum}&api_key=g1wkyl1ryPNwKJ7L1Au2Pmk28oVMmkmZ`);
+	getResults(`https://api.giphy.com/v1/gifs/search?q=${searchType}+${query}&limit=${limitSearchResults}&offset=${offsetNum}&api_key=g1wkyl1ryPNwKJ7L1Au2Pmk28oVMmkmZ`);
 
-	const loadMoreImgs = createButton('Load more');
-	container.appendChild(loadMoreImgs);
+	const loadMoreBtn = createButton('Load more');
+	container.appendChild(loadMoreBtn);
+	if (loadMoreBtn > 1) {
+		loadMoreBtn.remove();
+	}
 
-	loadMoreImgs.addEventListener('click', () => {
+	loadMoreBtn.addEventListener('click', () => {
 		let newOffset = offsetNum += 5;
-		getResults(`https://api.giphy.com/v1/gifs/search?q=${searchType}+${query}&limit=${limitNum}&offset=${newOffset}&api_key=g1wkyl1ryPNwKJ7L1Au2Pmk28oVMmkmZ`);
+		getResults(`https://api.giphy.com/v1/gifs/search?q=${searchType}+${query}&limit=${limitSearchResults}&offset=${newOffset}&api_key=g1wkyl1ryPNwKJ7L1Au2Pmk28oVMmkmZ`);
 	})
 })
 
