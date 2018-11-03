@@ -13,13 +13,18 @@ const createDiv = name => {
 	return perSet;
 }
 
+
 form.addEventListener('submit', event => {
 	event.preventDefault();
 	giphyDiv.innerHTML = '';
 
 	const query = document.querySelector('input').value;
 	const searchType = 'funny';
-	const url = `http://api.giphy.com/v1/gifs/search?q=${searchType}+${query}&api_key=g1wkyl1ryPNwKJ7L1Au2Pmk28oVMmkmZ&limit=5`;
+	const limitNum = 5;
+	// have a button that changes the offset by the incremeted 5 each time its pushed
+	let offsetNum = 0;
+	// offset is the starting index of a list
+	const url =`https://api.giphy.com/v1/gifs/search?q=${searchType}+${query}&limit=${limitNum}&offset=${offsetNum}&api_key=g1wkyl1ryPNwKJ7L1Au2Pmk28oVMmkmZ`
 
 	$.ajax({ url: url }).done(res => res.data.map(gif => {
 		const perImg = gif.images.original.url;
@@ -36,22 +41,12 @@ form.addEventListener('submit', event => {
 		deleteButton.addEventListener('click', e => {
 			e.target.closest('.perSet').remove();
 		})
-		// console.log(perImg)
 	}));
+
 })
 
-const everyFiveResults = () => {
-	
-}
-
-window.onscroll = everyFiveResults;
 
 
-// async function gif() {
-// 	const res = await fetch(url);
-// 	const json = await res.json(); 
-	
-// }
 
 
 
