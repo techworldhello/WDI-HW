@@ -17,23 +17,23 @@ const createDiv = name => {
 const getResults = url => {
 	fetch(url)
 	.then(res => res.json())
-		.then(json => json.data.map (gif => {
-			const perImg = gif.images.original.url;
-			const imgTag = document.createElement('img');
-			const imgDiv = createDiv('perSet');
+	.then(json => json.data.map (gif => {
+		const perImg = gif.images.original.url;
+		const imgTag = document.createElement('img');
+		const imgDiv = createDiv('perSet');
 
-			imgTag.src = perImg;
-			imgDiv.appendChild(imgTag);
-			giphyDiv.appendChild(imgDiv);
-			
-			const deleteButton = createButton('Delete');
-			imgDiv.appendChild(deleteButton);
+		imgTag.src = perImg;
+		imgDiv.appendChild(imgTag);
+		giphyDiv.appendChild(imgDiv);
+		
+		const deleteButton = createButton('Delete');
+		imgDiv.appendChild(deleteButton);
 
-			deleteButton.addEventListener('click', e => {
-				e.target.closest('.perSet').remove();
-			})
-		}))
-		.catch(err => console.error(err))
+		deleteButton.addEventListener('click', e => {
+			e.target.closest('.perSet').remove();
+		})
+	}))
+	.catch(err => console.error(err))
 }
 
 const limitNum = 5;
