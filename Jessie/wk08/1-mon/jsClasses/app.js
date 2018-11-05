@@ -1,5 +1,5 @@
 class bankAccount {
-	constructor (type = 'checking', balance = '0') {
+	constructor (type = 'checking', balance = 0) {
 		this.type = type;
 		this.balance = balance;
 		this.history = [];
@@ -18,7 +18,6 @@ class bankAccount {
 
 	deposit(num) {
 		this.balance += num;
-		this.history.push(this.balance);
 		this.history.push(`deposit amount: ${num}, balance is now ${this.balance}`);
 	}
 
@@ -27,7 +26,7 @@ class bankAccount {
 	}
 
 	transactionHistory() {
-		return this.history.filter((elem, i) => i % 2)
+		return this.history;
 	}
 }
 
