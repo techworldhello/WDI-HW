@@ -1,4 +1,4 @@
-class bankAccount {
+class BankAccount {
 	constructor (type = 'checking', balance = 0) {
 		this.type = type;
 		this.balance = balance;
@@ -30,7 +30,7 @@ class bankAccount {
 	}
 }
 
-const checking = new bankAccount();
+const checking = new BankAccount();
 checking.withdraw(3)
 checking.deposit(30)
 checking.deposit(130)
@@ -38,7 +38,7 @@ console.log(checking.getType())
 console.log(checking.showBalance())
 console.log(checking.transactionHistory())
 
-const savings = new bankAccount('savings', 10);
+const savings = new BankAccount('savings', 10);
 savings.withdraw(300)
 savings.deposit(30)
 savings.deposit(130)
