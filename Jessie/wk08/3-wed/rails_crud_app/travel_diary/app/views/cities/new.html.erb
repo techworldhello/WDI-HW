@@ -1,0 +1,14 @@
+<form action="/update" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+
+    <label for="">City</label>
+    <input type="text" name="city">
+
+    <label for="">Image url</label>
+    <input type="text" name="image_url">
+
+    <label for="">Description</label>
+    <input type="text" name="description">
+
+    <button>Let's go!</button>
+</form>

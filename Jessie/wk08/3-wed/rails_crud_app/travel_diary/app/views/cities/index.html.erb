@@ -1,0 +1,22 @@
+<h1>Travel Diary  ✈️</h1>
+ <main class='container'>
+	<aside class="panel">
+		<p><a href="/cities/new">New post</a></p>
+		<p><a href="/cities">Places I've been</a></p>
+		<p><a href="/cities/to_go">Places to go</a></p>
+	</aside>
+	<div class='random-img'>
+        <% @cities.each do |city| %>
+            <form action="">
+                <a href="/city/<%= city.id %>">Throw back</a>
+            </form>
+            <% city.images.each do |image| %>
+            <img src="<%= image.url %>" alt="">
+            <% end %>
+        <% end %>
+	</div>
+</main> 
+
+<%# rails generate resource city city:string image_url:string description:text has_been:boolean
+rails generate resource comment body:text city:references
+rails generate resource image url:text city:references %>
