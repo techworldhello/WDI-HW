@@ -1,12 +1,13 @@
 require 'pry'
 
 class Robot
-	attr_reader :name, :mac
+	attr_reader :name, :mac, :timeStart, :currentTime
 	@@count = 0
 
 	def initialize
-		gen_name
 		@count = 0
+		gen_name
+		setup_mac_address
 	end 
 
 	def reset
@@ -17,10 +18,10 @@ class Robot
 		letters = ('A'..'Z').to_a.sample(2)
 		nums = (1..10).to_a.sample(3)
 		@name = letters.concat(nums).join
-		@@start_time = Time.now.round(2)
+		@timeStart = Time.now
 	end 
 
-	def mac_address
+	def setup_mac_address
 		letters = ('A'..'Z').to_a
 		nums = (1..10).to_a
 		nested_arr = letters.product(nums).flatten.sample(12).each_slice(2).to_a
@@ -34,10 +35,9 @@ class Robot
 	end 
 
 	def timer
-		start = Time.now
-		finish = Time.now
-		diff = finish - start
-		"#{diff.round(2)} seconds since the last reboot, #{start} since creation"
+		@currentTime = Time.now
+		diff = @currentTime - @timeStart
+		"#{diff.round(2)} seconds since the last reboot, #{@currentTime} since creation"
 	end 
 end 
 

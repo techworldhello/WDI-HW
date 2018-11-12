@@ -6,14 +6,14 @@ robot1 = Robot.new
 puts robot1.name
 puts robot1.name
 puts robot1.name
-puts robot1.mac_address
+puts robot1.mac
 
 puts "Robot 2: "
 robot2 = Robot.new
 puts robot2.name
 puts robot2.name
 puts robot2.name
-puts robot2.mac_address
+puts robot2.mac
 
 puts "Robot 3: "
 robot3 = Robot.new
@@ -23,12 +23,12 @@ puts "Resetting to factory settings."
 robot3.reset
 puts robot3.name
 puts robot3.name
-puts robot3.mac_address
+puts robot3.mac
 
 # The mac address never changes, even if you reset it to factory settings.
 puts "Mac address shouldnt change"
 robot3.reset
-puts robot3.mac_address
+puts robot3.mac
 puts "instruction count"
 puts robot3.instruction_count
 puts robot2.instruction_count
