@@ -23,5 +23,8 @@ test('send error msg if = or & is forgotten', () => {
 })
 
 test('send error message if the query str contains spaces', () => {
-	expect(lib.queryStringToObj("?t=jaws &apiKey=12345")).toEqual('String cannot contain a space')
+	expect(lib.queryStringToObj("?t=jaws &apiKey=12345")).toEqual({
+		t: "jaws",
+		apiKey: "12345"
+	})
 })
