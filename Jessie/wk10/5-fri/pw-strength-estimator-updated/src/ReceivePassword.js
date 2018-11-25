@@ -1,7 +1,6 @@
 import React from 'react';
 import Results from './Results';
 import getScore from './lib/getScore';
-import testCommons from './lib/testCommons';
 import './ReceivePassword.css';
 
 export default class ReceivePassword extends React.Component {
@@ -14,14 +13,11 @@ export default class ReceivePassword extends React.Component {
   }
 
   processPassword(event) {
-    const commons = testCommons(event.target.value);
     const score = getScore(event.target.value);
     //console.log(event.target.value)
-    this.setState({
-      commons, 
-      score
-    });
-    if (this.props.onChange) this.props.onChange(score, commons);
+    this.setState({ score });
+
+    if (this.props.onChange) this.props.onChange(score);
   }
 
   toggleShowPassword() {
@@ -37,10 +33,10 @@ export default class ReceivePassword extends React.Component {
         <h3>Test the strength of your password</h3>
         <input  
           className="input"
-          type={this.state.showPassword ? 'password' : 'text'}
+          type={ this.state.showPassword ? 'password' : 'text' }
           onKeyUp={ this.processPassword } 
           placeholder='Be original' />
-        <input type="checkbox" onChange={this.toggleShowPassword.bind(this)} />
+        <input type="checkbox" onChange={ this.toggleShowPassword.bind(this) } />
         <Results />
       </div>
     )

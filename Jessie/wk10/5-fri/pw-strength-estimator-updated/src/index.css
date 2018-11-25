@@ -4,5 +4,9 @@ body {
   display: flex;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 2em;
+  color: white;
+  background: rgb(33, 121, 121);
 }
+
+
 

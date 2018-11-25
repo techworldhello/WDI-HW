@@ -13,16 +13,24 @@ class App extends Component {
   }
 
   onChange(score) {
-    if (score.score > 4) {
-      return 'high-score' //create css elem!!
+    this.setState({ score });
+  }
+
+  changeBackgroundColor(score) {
+    if (score === 4) {
+      return 'high-score';
+    } else if (score > 4) {
+      return 'highest-score';
     }
-    this.setState({score});
   }
 
   render() {
+    const { score } = this.state.score;
+    const scoreToBackground = score;
+
     return (
       <div className="App">
-        <ReceivePassword onChange={ this.onChange } />
+        <ReceivePassword onChange={ this.onChange } color={ this.changeBackgroundColor(scoreToBackground) }/>
         <Results score={ this.state.score } />
       </div>
     );
