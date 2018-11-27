@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Results = (result) => (
-  <div>
+  <div className="results">
     <pre>{JSON.stringify(result, null, 2)}</pre>
   </div>
 )

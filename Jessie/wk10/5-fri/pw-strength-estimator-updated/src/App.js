@@ -26,11 +26,10 @@ class App extends Component {
 
   render() {
     const { score } = this.state.score;
-    const scoreToBackground = score;
-
+    console.log(score)
     return (
       <div className="App">
-        <ReceivePassword onChange={ this.onChange } color={ this.changeBackgroundColor(scoreToBackground) }/>
+        <ReceivePassword onChange={ this.onChange } className={this.changeBackgroundColor(score)}/>
         <Results score={ this.state.score } />
       </div>
     );

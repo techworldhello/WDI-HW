@@ -37,7 +37,6 @@ export default class ReceivePassword extends React.Component {
           onKeyUp={ this.processPassword } 
           placeholder='Be original' />
         <input type="checkbox" onChange={ this.toggleShowPassword.bind(this) } />
-        <Results />
       </div>
     )
   }
