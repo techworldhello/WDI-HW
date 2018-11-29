@@ -7,30 +7,21 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      score: {}
+      result: {}
     }
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(score) {
-    this.setState({ score });
-  }
-
-  changeBackgroundColor(score) {
-    if (score === 4) {
-      return 'high-score';
-    } else if (score > 4) {
-      return 'highest-score';
-    }
+  onChange(result) {
+    this.setState({ result });
   }
 
   render() {
-    const { score } = this.state.score;
-    console.log(score)
+    const { result } = this.state;
     return (
       <div className="App">
-        <ReceivePassword onChange={ this.onChange } className={this.changeBackgroundColor(score)}/>
-        <Results score={ this.state.score } />
+        <ReceivePassword onChange={ this.onChange } score={result.score} />
+        <Results score={ result } />
       </div>
     );
   }

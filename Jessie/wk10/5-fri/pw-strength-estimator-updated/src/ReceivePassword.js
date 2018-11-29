@@ -26,10 +26,18 @@ export default class ReceivePassword extends React.Component {
     });
   }
 
+  changeBackgroundColor(score) {
+    if (score === 4) {
+      return 'high-score';
+    } else if (score > 4) {
+      return 'highest-score';
+    }
+  }
+
   render() {
 
     return (
-      <div>
+      <div className={this.changeBackgroundColor(this.props.score)}>
         <h3>Test the strength of your password</h3>
         <input  
           className="input"
