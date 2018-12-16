@@ -3,27 +3,49 @@ class CitiesController < ApplicationController
         @cities = City.all
     end 
 
-    def new 
-    end 
-
-    def edit
-        @city = city.find(params[:id])
+    def to_go
+        
     end
 
-    def update 
-        city = City.find(params[:id])
-        city.city = params[:city]
-        city.image_url = params[:image_url]
-        city.description = params[:description]
-        if city.save 
-            redirect_to '/cities/update'
-        else
+    def show
+        @city = City.find(params[:id])
+    end 
+     
+    def update
+        @city = City.find(params[:id])
+
+    end
+
+    def new 
+        @city = City.new
+    end 
+
+    def create 
+        @city = City.new(city_params)
+        if @city.save
+            redirect_to cities_path
+        else 
             render :new
         end 
     end
 
-    def to_go
+    def edit
+        @city = City.find(params[:id])
+    end 
 
-    end
+    def destroy
+        city = City.find(params[:id])
+        if city.destroy
+            redirect_to city_path
+        else 
+            render :show
+        end 
+    end 
+
+    private
+
+    def city_params
+        params.require(:city).permit(:city, :description)
+    end 
 
 end

@@ -1,19 +1,19 @@
-<h1>travel diary</h1>
+<h1>Travel Diary ✈️</h1>
 
 <main class='container'>
-	<div class='places-been'>
-		<% @cities.each do |name| %>
-		<h2><a href="/<%= name["city"] %>"><%= name["city"] %></a></h2>
-		<img src="<%= name["image_url"] %>" alt="city">
-		<% end %>
+	<aside class="panel">
+		<form action="/to-go">
+			<p><a href="/city/new">New post</a></p>
+			<p><a href="/city">Places I've been</a></p>
+			<ul>
+				<li><a href="/:city"></a></li>
+			</ul>
+			<p><a href="/city/to-go">Places to go</a></p>
+		</form>
+	</aside>
+	<div class='random-img'>
+		<img src="">
 	</div>
-	<a href="/city/new">add a new post!</a>
-</main>
 
-<!-- take user to a page with ul list that can CRUD -->
-<form action="/to-go">
-	<section class='places-to-go'>
-		<p>places I need to go</p>
-		<button>edit</button>
-	</section>
-</form>
+	<button class="misty-rose">Misty Rose</button>
+</main>

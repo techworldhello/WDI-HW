@@ -1,0 +1,10 @@
+.grid {
+  height: 12em;
+  width: 12em;
+  margin: 2em;
+  background-color: aquamarine;
+}
+
+.active {
+  background-color: purple;
+}

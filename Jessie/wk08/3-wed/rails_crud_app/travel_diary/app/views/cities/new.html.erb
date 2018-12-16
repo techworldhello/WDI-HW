@@ -1,14 +1,19 @@
-<form action="/update" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+<%= form_for @city do |elem| %>
+    <div>
+        <%= elem.label :city %>
+        <%= elem.text_field :city %>
+    </div>
+    
+    <% @city.images.each do |image| %>
+    <div>
 
-    <label for="">City</label>
-    <input type="text" name="city">
+        <%= @elem.images.label :url %>
+        <%= elem.text_field :url %>
+    </div>
+    <div>
+        <%= elem.label :description %>
+        <%= elem.text_field :description %>
+    </div>
 
-    <label for="">Image url</label>
-    <input type="text" name="image_url">
-
-    <label for="">Description</label>
-    <input type="text" name="description">
-
-    <button>Let's go!</button>
-</form>
+    <%= elem.submit %>
+<% end %>

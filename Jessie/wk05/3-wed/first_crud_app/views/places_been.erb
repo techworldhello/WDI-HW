@@ -1,0 +1,4 @@
+<% @cities.each do |name| %>
+	<h2><a href="/<%= name["city"] %>"><%= name["city"] %></a></h2>
+	<img src="<%= name["image_url"] %>" alt="city">
+<% end %>

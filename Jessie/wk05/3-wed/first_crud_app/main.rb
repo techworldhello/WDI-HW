@@ -3,6 +3,8 @@ require 'sinatra/reloader'
 require 'pg'
 require 'pry'
 
+# LIKE IFF STATEMNETS, THE MOST SPECIFIC IS HIGHER OR IT'LL NEVER TRICKLE DOWN
+
 def run_sql(sql_query)
 	conn = PG.connect(dbname: 'first_crud_app')
 	result = conn.exec(sql_query)
@@ -10,21 +12,32 @@ def run_sql(sql_query)
 	result
 end 
 
+# homepage
 get '/' do
-	@cities = run_sql('SELECT * FROM cities_main;')
+	# get all avail imgs and randomise on page
   erb :index
 end
 
+# new post
 get '/city/new' do
 	erb :new
 end 
 
+# adding new post
 post '/cities' do
-	run_sql("INSERT INTO cities_main (city, image_url, description) VALUES ('#{ params[:city] }', 
-		'#{ params[:image_url] }, 
-		'#{ params[:description] }');")
+	city = Been_City.new
+	city.name = params[:name]
+	city.image_url = params[:image_url]
+	city.description = params[:description]
 	redirect to('/')
 end 
+
+get '/city' do
+	@cities = Been_City.all
+	binding.pry
+	erb :city_collection
+end 
+
 
 get '/:city' do
 	@city = run_sql("SELECT city FROM cities_main where city = #{:city};").first
@@ -50,10 +63,10 @@ put '/:city' do
 	erb :city
 end 
 
-get '/to-go' do
-
-	erb :show
-end 
+# get '/city/to-go' do
+# 	@cities = run_sql('SELECT * FROM cities_main;')
+# 	erb :show
+# end 
 
 
 

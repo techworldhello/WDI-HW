@@ -8,10 +8,10 @@
 	<div class='random-img'>
         <% @cities.each do |city| %>
             <form action="">
-                <a href="/city/<%= city.id %>">Throw back</a>
+                <p><a href="/cities/<%= city.id %>">Throw back</p>
             </form>
             <% city.images.each do |image| %>
-            <img src="<%= image.url %>" alt="">
+                <img src="<%= image.url %>" alt="">
             <% end %>
         <% end %>
 	</div>

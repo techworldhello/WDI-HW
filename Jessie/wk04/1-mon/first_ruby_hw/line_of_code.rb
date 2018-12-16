@@ -19,7 +19,7 @@ lookup gets method and the readlines method
 
 =end 
 
-puts "what's the filename you're wanting info (no. of lines of code) for?"
+print "enter a filename: " # keeps input on the same line 
 
 filename = gets.chomp
 
@@ -28,7 +28,23 @@ def num_line_in_file(filename)
 	lines = File.readlines(file) # array with line breaks
 	line_count = lines.length
 
-	puts "Number of lines for your file #{line_count}"
+	puts "Number of lines for your file is #{line_count}"
 end
 
 num_line_in_file(filename)
+
+
+lines_no_blank = 0
+
+lines.each do |line|
+	if line.chomp != ''
+	lines_no_blank += 1
+	end 
+end
+
+lines_of_code = lines.select do |line|
+	!line.chomp.empty? #when its not an empty string, keep it 
+end 
+
+puts lines_of_code.length
+

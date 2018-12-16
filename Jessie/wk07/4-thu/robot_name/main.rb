@@ -7,6 +7,7 @@ puts robot1.name
 puts robot1.name
 puts robot1.name
 puts robot1.mac
+puts robot1.instruction_count
 
 puts "Robot 2: "
 robot2 = Robot.new

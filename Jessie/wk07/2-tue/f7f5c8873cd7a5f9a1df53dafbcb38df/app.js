@@ -10,7 +10,7 @@ setColor.addEventListener('click', event => {
 })
 
 
-function createSquares() {
+function createCircles() {
 	for(let i = 0; i <= 1000; i++) {
 		const squares = document.createElement('div');
 		squares.classList.add("square");
@@ -21,7 +21,7 @@ function createSquares() {
 	}
 }
 
-createSquares();
+createCircles();
 
 const poster = document.querySelector('#displayPoster');
 

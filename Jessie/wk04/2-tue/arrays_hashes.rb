@@ -69,7 +69,7 @@ users = {
 p users["Jonathan"][:twitter]
 
 # How would you add the number 7 to Erik's favorite numbers?
-p users["Erik"][:favorite_numbers].push(7)
+p users["Erik"][:favorite_numbers] << 7
 
 # How would you add yourself to the users hash?
 users["Jessie"] = { 
@@ -82,6 +82,8 @@ p users["Erik"][:favorite_numbers]
 
 # How would you return the smallest of Erik's favorite numbers?
 p users["Erik"][:favorite_numbers].sort[0]
+# better way!
+p users["Erik"][:favorite_numbers].min
 
 # How would you return an array of Anil's favorite numbers that are also even?
 p users["Anil"][:favorite_numbers].select { |num| num.even? }
@@ -93,4 +95,14 @@ p users["Jonathan"][:favorite_numbers] & users["Erik"][:favorite_numbers] & user
 all_arrays = users["Jonathan"][:favorite_numbers] + users["Erik"][:favorite_numbers] + users["Anil"][:favorite_numbers]
 
 p all_arrays.sort.uniq
+
+# better way if there are more keys
+
+numbers = []
+
+users.values.each do |person|
+	numbers += person[:favorite_numbers]
+end
+
+p numbers.sort.uniq
 

@@ -10,14 +10,31 @@ h1 {
 .container {
 	display: flex;
 	justify-content: space-around;
+	height: 30em;
 }
 
-.places-been {
+.panel {
+	display: flex;
+	flex-direction: column;
+	background-color: lavender;
+	padding: 20px;
+}
+
+.random-img {
 	display: flex;
 	flex-direction: column;
 	margin: 50px;
 }
 
 .places-to-go {
+	text-align: center;
+}
+
+img {
+	height: 10em;
+	width: 10em;
+}
+
+.new-form {
 	text-align: center;
 }

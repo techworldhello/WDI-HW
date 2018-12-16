@@ -138,7 +138,7 @@ checkingElements.btnTransfer.addEventListener('click', () => {
 
 savingsElements.btnDeposit.addEventListener('click', () => { 
 	deposit(BALANCE_SAVINGS, savingsElements.input.value);
-	// savingsAccInterest();
+	savingsAccInterest();
 });
 
 savingsElements.btnTransfer.addEventListener('click', () => {

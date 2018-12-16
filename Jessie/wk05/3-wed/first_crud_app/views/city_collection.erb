@@ -1,0 +1,8 @@
+<h1>My memoir</h1>
+
+<% @cities.each do |city| %>
+	<p>
+		<a href="/:city"><%= city.name %></a>
+	</p>
+	<img src="<%= city.image_url %>" alt="a fab place">
+<% end %>

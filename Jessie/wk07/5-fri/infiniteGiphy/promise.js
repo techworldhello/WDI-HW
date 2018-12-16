@@ -49,10 +49,8 @@ form.addEventListener('submit', event => {
 	getResults(`https://api.giphy.com/v1/gifs/search?q=${searchType}+${query}&limit=${limitSearchResults}&offset=${offsetNum}&api_key=g1wkyl1ryPNwKJ7L1Au2Pmk28oVMmkmZ`);
 
 	const loadMoreBtn = createButton('Load more');
-	container.appendChild(loadMoreBtn);
-	if (loadMoreBtn > 1) {
-		loadMoreBtn.remove();
-	}
+	giphyDiv.appendChild(loadMoreBtn);
+	// put into html and hide when no results
 
 	loadMoreBtn.addEventListener('click', () => {
 		let newOffset = offsetNum += 5;

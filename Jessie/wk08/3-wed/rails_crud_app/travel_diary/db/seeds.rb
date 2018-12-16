@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 City.destroy_all
+Comment.destroy_all
+Image.destroy_all
 
 city = City.create(city: 'Paris', description: 'loved it', has_been: true)
 city2 = City.create(city: 'New York', description: 'yayy', has_been: true)

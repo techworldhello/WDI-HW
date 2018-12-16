@@ -31,11 +31,11 @@ days_of_the_week = [
 	"Sunday"
 ]
 
-remove_sunday = days_of_the_week.pop
+puts days_of_the_week.unshift(days_of_the_week.pop)
 
-days_of_the_week.unshift(remove_sunday)
+# or 
 
-puts days_of_the_week
+puts days_of_the_week.rotate!(-1)
 
 new_days_of_the_week = [
 	[
@@ -52,4 +52,8 @@ new_days_of_the_week = [
 ]
 
 p new_days_of_the_week.shift.sort
+
+# or 
+
+p new_days_of_the_week.first.sort
 

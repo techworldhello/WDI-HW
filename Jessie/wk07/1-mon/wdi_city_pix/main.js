@@ -10,6 +10,8 @@ const getCity = () => {
 	}
 }
 
+// value takes precidence over textNode, so textNode can be different from value!!
+
 getCity();
 
 const docBody = document.querySelector('body');
